@@ -8,7 +8,7 @@ public class CardDeck {
 	
 	public CardDeck() {
 		this.cards = this.generateCards();
-		Collections.shuffle(this.cards);
+		Collections.shuffle(cards);
 	}
 	
 	private Stack<Card> generateCards(){
@@ -16,23 +16,32 @@ public class CardDeck {
 		
 		for(String pattern : PATTERNS) {
 			for(int i=1; i<=CARD_NUM; i++) {
-				Card card = new Card(pattern,String.valueOf(i));
+				Card card;
+				if(i==5) {
+					card = new Card(pattern,String.valueOf(i),5);
+				}
+				else if(i==10 || i==13) {
+					card = new Card(pattern,String.valueOf(i),10);
+				}
+				else {
+					card = new Card(pattern,String.valueOf(i),0);
+				}
 				cards.push(card);
 			}
 		}
-		cards.push(new Card("dragon","dragon"));
-		cards.push(new Card("phoenix","phoenix"));
-		cards.push(new Card("dog","dog"));
-		cards.push(new Card("bird","bird"));
+		cards.push(new Card("dragon","dragon",25));
+		cards.push(new Card("phoenix","phoenix",-25));
+		cards.push(new Card("dog","dog",0));
+		cards.push(new Card("bird","bird",0));
 		return cards;
 	}
 	
 	public Stack<Card> getCards(){
-		return this.cards;
+		return cards;
 	}
 	
 	public Card drawCard() {
-		return this.cards.pop();
+		return cards.pop();
 	}
 
 }
