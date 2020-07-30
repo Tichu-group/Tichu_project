@@ -62,6 +62,20 @@ public class Player {
 			System.out.println("There is no such card.");
 		}
 	}
+	public void removeAllCard(ArrayList<Card> cards) {
+		cards.clear();
+	}
+	
+	public Card selectCard(String pattern,String number) {
+		for(Card card : hand) {
+			if(card.getNumber() == number) {
+				if(card.getPattern() == pattern) {
+					return card;
+				}
+			}
+		}
+		return null;
+	}
 	
 	public int numOfCard() {
 		return hand.size();
