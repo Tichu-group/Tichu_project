@@ -1,4 +1,3 @@
-
 public class Card {
 	private String pattern;
 	private String number;
@@ -19,4 +18,5 @@ public class Card {
 	public int getPoint(){
 		return point;
 	}
+	
 }
