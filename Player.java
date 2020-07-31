@@ -46,21 +46,16 @@ public class Player {
 		return obtained;
 	}
 	
-	public void receiveCard(Card card) { //received from dealer
-		hand.add(card);
+	public void receiveCard(ArrayList<Card> cards) { //received from dealer
+		hand.addAll(cards);
 	}
 	
-	public void getCard(Card card) { //get from the turn which I win
-		obtained.add(card);
+	public void getCard(ArrayList<Card> cards) { //get from the turn which I win
+		obtained.addAll(cards);
 	}
 	
-	public void removeCard(Card card) {
-		if(hand.contains(card)) {
-			hand.remove(card);
-		}
-		else {
-			System.out.println("There is no such card.");
-		}
+	public void removeCards(ArrayList<Card> cards) {
+		hand.removeAll(cards);
 	}
 	public void removeAllCard(ArrayList<Card> cards) {
 		cards.clear();
