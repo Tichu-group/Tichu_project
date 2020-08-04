@@ -1,3 +1,4 @@
+package tichu;
 import java.util.ArrayList;
 public class Player {
 	private ArrayList<Card> hand;
@@ -63,8 +64,8 @@ public class Player {
 	
 	public Card selectCard(String pattern,String number) {
 		for(Card card : hand) {
-			if(card.getNumber() == number) {
-				if(card.getPattern() == pattern) {
+			if(card.getNumber().equals(number)) {
+				if(card.getPattern().equals(pattern)) {
 					return card;
 				}
 			}
@@ -83,4 +84,5 @@ public class Player {
 		}
 		return score;
 	}
+
 }

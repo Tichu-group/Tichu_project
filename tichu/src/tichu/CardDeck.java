@@ -1,5 +1,7 @@
+package tichu;
 import java.util.Stack;
 import java.util.Collections;
+import java.util.ArrayList;
 
 public class CardDeck {
 	private Stack<Card> cards;
@@ -44,4 +46,11 @@ public class CardDeck {
 		return cards.pop();
 	}
 
+	public ArrayList<Card> draw_n_cards(int number_of_cards){
+		ArrayList<Card> temp = new ArrayList<>();
+		for (int i = 0; i < number_of_cards; i++){
+			temp.add(cards.pop());
+		}
+		return temp;
+	}
 }
