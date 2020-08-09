@@ -1,3 +1,4 @@
+package tichu;
 
 public class Team {
 	public Player player1;

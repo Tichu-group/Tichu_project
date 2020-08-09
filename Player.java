@@ -1,19 +1,26 @@
+package tichu;
 import java.util.ArrayList;
+import java.util.Collections;
+
 public class Player {
+	private String name;
 	private ArrayList<Card> hand;
 	private ArrayList<Card> obtained;
 	private boolean largeTichu;
 	private boolean smallTichu;
 	private boolean out;
 	
-	public Player() {
+	public Player(String name) {
+		this.name = name;
 		this.hand = new ArrayList<>();
 		this.obtained = new ArrayList<>();
 		this.largeTichu = false;
 		this.smallTichu = false;
 		this.out = false;
 	}
-		
+	public String getName() {
+		return name;
+	}
 	public boolean isLargeT(){
 		return largeTichu;
 	}
@@ -61,15 +68,21 @@ public class Player {
 		cards.clear();
 	}
 	
-	public Card selectCard(String pattern,String number) {
-		for(Card card : hand) {
-			if(card.getNumber() == number) {
-				if(card.getPattern() == pattern) {
-					return card;
-				}
+	public ArrayList<Card> selectCard(ArrayList<Integer> cards) {
+		ArrayList<Card> cardlist = new ArrayList<>();
+		for(int card : cards) {
+			cardlist.add(hand.get(card));
 			}
-		}
-		return null;
+		return cardlist;
+	}
+	
+	public void sortcard_bynumber() {
+		Collections.sort(hand,new Numbercomp());
+		
+	}
+	
+	public void sortcard_bypattern() {
+		Collections.sort(hand,new Patterncomp());
 	}
 	
 	public int numOfCard() {
@@ -83,4 +96,24 @@ public class Player {
 		}
 		return score;
 	}
+	public static void main(String[] args) {
+		CardDeck carddeck = new CardDeck();
+		Player player1 = new Player("player1");
+		player1.receiveCard(carddeck.draw_n_cards(8));
+		ArrayList<Card> phand = player1.getHand();
+		for(Card card:phand){
+			System.out.println("<1>"+card.getPattern()+card.getNumber());
+		}
+		player1.sortcard_bynumber();
+		phand = player1.getHand();
+		for(Card card:phand){
+			System.out.println("<2>"+card.getPattern()+card.getNumber());
+		}
+		player1.sortcard_bypattern();
+		phand = player1.getHand();
+		for(Card card:phand){
+			System.out.println("<3>"+card.getPattern()+card.getNumber());
+		}
+	}
 }
+
