@@ -96,24 +96,6 @@ public class Player {
 		}
 		return score;
 	}
-	public static void main(String[] args) {
-		CardDeck carddeck = new CardDeck();
-		Player player1 = new Player("player1");
-		player1.receiveCard(carddeck.draw_n_cards(8));
-		ArrayList<Card> phand = player1.getHand();
-		for(Card card:phand){
-			System.out.println("<1>"+card.getPattern()+card.getNumber());
-		}
-		player1.sortcard_bynumber();
-		phand = player1.getHand();
-		for(Card card:phand){
-			System.out.println("<2>"+card.getPattern()+card.getNumber());
-		}
-		player1.sortcard_bypattern();
-		phand = player1.getHand();
-		for(Card card:phand){
-			System.out.println("<3>"+card.getPattern()+card.getNumber());
-		}
-	}
+	
 }
 
