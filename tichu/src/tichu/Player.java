@@ -75,6 +75,12 @@ public class Player {
 			}
 		return cardlist;
 	}
+	public void changeCard(Player player, int select) {
+		ArrayList<Card> cardlist = new ArrayList<>();
+		cardlist.add(hand.get(select));
+		player.getCard(cardlist);
+		this.removeCards(cardlist);
+	}
 	
 	public void sortcard_bynumber() {
 		Collections.sort(hand,new Numbercomp());
